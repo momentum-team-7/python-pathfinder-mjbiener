@@ -4,7 +4,7 @@ large = 'elevation_large.txt'
 
 coordinates = []
 
-with open('elevation_small.txt', 'r') as file:
+with open(small, 'r') as file:
     for line in file.readlines():
         coordinates.append(line.split())
     print(coordinates)
@@ -26,8 +26,7 @@ print (el_delta)
 
 # difference between max and min needs to be scaled to difference between 255-0
 
-
-def calc_color_value (elevation, min, max) :
+def calc_color_value (elevation, min_el, max_el) :
     color_value = (((int(elevation) - min_el)/(el_delta)) * 255)
     print(int(color_value), int(color_value), int(color_value))
     return (int(color_value), int(color_value), int(color_value))
@@ -36,11 +35,8 @@ def calc_color_value (elevation, min, max) :
 dimensions = len(coordinates), len(coordinates[0])
 print (dimensions)
 
-
-
 # img = Image.new('RGB', dimensions, color = (200, 200, 200))
 # img.save ('solid_color_image.png')
-
 
 img = Image.new('RGB', dimensions,)
 for x in range(dimensions[0]):
