@@ -31,11 +31,15 @@ As you go through this assignment, use test-driven development as much as possib
 
 Read [the Mountain Paths PDF](MountainPaths.pdf) to get started.
 
-Read the data from `elevation_small.txt` into an appropriate data structure to get the elevation data. This file is made up of multiple lines. Each line has a list of numbers representing elevation in meters. The elevation is the maximum elevation for a 90m x 90m square.
-
+Read the data from `elevation_small.txt` into an appropriate data structure to get the elevation data.    
+  <!-- check out readlines and store as a list of lists  -->
+ 
+  This file is made up of multiple lines. Each line has a list of numbers representing elevation in meters. The elevation is the maximum elevation for a 90m x 90m square.
+<!-- print out what you have and think about how this corresonds to a map consider the coordinates index position-->
 The numbers in this file are lined up like x-y coordinates. If the file contains the following:
 
 ```
+
 150 175 150 200
 170 191 190 182
 179 191 180 182
@@ -44,6 +48,10 @@ The numbers in this file are lined up like x-y coordinates. If the file contains
 
 Then the elevation at the top left corner (x: 0, y: 0) is 150 and the elevation at the bottom right (x: 3, y: 3) is 192. The elevation at x: 1, y: 2 is 191.
 
+
+<!-- make a square that is one color that matches the dimensions   how to make a square of certain dimensions in pillow-->
+<!-- figure out grayscale percentage for each elevation min elevation (black RGB 0,0,0) to max elevation (white RGB 255, 255, 255) difference is the grayscale range -->
+<!-- try to match one pixel on gray scale to elevation -->
 Using the [Pillow library](https://pillow.readthedocs.io/en/3.0.x/index.html), create an elevation map from the data. Higher elevations should be brighter; lower elevations darker. Read [the chapter on manipulating images from _Automate the Boring Stuff with Python_](https://automatetheboringstuff.com/chapter17/) to learn how to use Pillow.
 
 For `elevation_small.txt`, the map should look like this:
