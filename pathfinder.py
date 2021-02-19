@@ -1,10 +1,11 @@
 from PIL import Image
 small = 'elevation_small.txt'
 large = 'elevation_large.txt'
+test = 'test_grid.txt'
 
 coordinates = []
 
-with open(small, 'r') as file:
+with open(large, 'r') as file:
     for line in file.readlines():
         coordinates.append(line.split())
     print(coordinates)
@@ -28,11 +29,12 @@ print (el_delta)
 
 def calc_color_value (elevation, min_el, max_el) :
     color_value = (((int(elevation) - min_el)/(el_delta)) * 255)
-    print(int(color_value), int(color_value), int(color_value))
+    # print (int(color_value), int(color_value), int(color_value))
     return (int(color_value), int(color_value), int(color_value))
 
 # determines the pixel dimensions of the required picture 
-dimensions = len(coordinates), len(coordinates[0])
+
+dimensions = len(coordinates[0]), len(coordinates)
 print (dimensions)
 
 # img = Image.new('RGB', dimensions, color = (200, 200, 200))
@@ -41,7 +43,6 @@ print (dimensions)
 img = Image.new('RGB', dimensions,)
 for x in range(dimensions[0]):
         for y in range(dimensions[1]):
-            img.putpixel((x, y), calc_color_value(
-                coordinates[x][y], min_el, max_el))
-# img.save('mountain_image.png')
-img.save(small[0:len(small)-3] + 'png')
+            img.putpixel((y, x), calc_color_value(
+                coordinates[x][y], min_el, max_el)) #changing putpixel to y,x rotated image 90 degrees and mirrored#
+img.save(large[0:len(large)-3] + 'png')
